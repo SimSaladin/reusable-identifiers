@@ -1,0 +1,26 @@
+name:                reusable-identifiers
+version:             0.1.0.0
+synopsis:            Reusable temporary unique numerical identifiers
+description:         Draw identifiers from a bounded pool and then free them to
+                     be drawn again from the pool.
+license:             BSD3
+license-file:        LICENSE
+author:              Samuli Thomasson
+homepage:            https://github.com/SimSaladin/reusable-identifiers
+maintainer:          samuli.thomasson@paivola.fi
+copyright:           2014 Samuli Thomasson
+category:            Data
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+source-repository head
+   type:   git
+   location: git://github.com/SimSaladin/reusable-identifiers.git
+
+library
+  exposed-modules:     Data.ReusableIdentifiers
+  build-depends:       base >=4.7 && <4.8
+                     , vector >=0.10 && <0.11
+                     , random >= 1.0 && <2.0
+  default-language:    Haskell2010
