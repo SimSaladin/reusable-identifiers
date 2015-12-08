@@ -16,10 +16,16 @@ import Control.Monad (msum)
 import Data.Bits
 import Data.Word
 import Data.Int
+import Data.SafeCopy
 import Data.Vector.Storable hiding ((++))
 import System.Random
 
 data Record = Record Int StdGen !(Vector Int)
+            deriving (Show, Read)
+
+instance SafeCopy Record where
+    putCopy (Record n _ v) = contain $ do safePut n; safePut v
+    getCopy = contain $ do n <- safeGet; v <- safeGet; return (Record n (mkStdGen n) v)
 
 unit = finiteBitSize (undefined :: Int)
 
